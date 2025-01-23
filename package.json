@@ -1,0 +1,40 @@
+{
+  "name": "c",
+  "version": "1.0.0",
+  "description": "This project combines **Playwright** and **Cucumber** to create a powerful **Behavior Driven Development (BDD)** solution for test automation. By leveraging the **Page Object Pattern**, **global assertions**, and **custom hooks**, this setup ensures that your automated tests are both **easy to maintain** and **reliable**. Plus, it comes with a **beautifully styled Cucumber HTML Reporter** powered by **Bootstrap** for great visual clarity.",
+  "main": "index.js",
+  "scripts": {
+    "clean:reports": "rm -R -f reports/* && rm -rf test-results && rm -rf playwright-report",
+    "clean:bddgen": "rm -R -f .features-gen/features/*",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "bddgen": "npx bddgen",
+    "pretest": "npm run clean:reports && npm run clean:bddgen",
+    "test:run": "npx playwright test",
+    "posttest": "node cucumber-html-report.js",
+    "test:ui": "npx bddgen && npx playwright test --ui",
+    "test:local": "npm run pretest && npm run bddgen && npm run test:run && npm run posttest"
+  },
+  "keywords": [],
+  "author": "Andi",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/likesmoothies/Playwright--Bdd.git"
+  },
+  "bugs": {
+    "url": "https://github.com/likesmoothies/Playwright--Bdd/issues"
+  },
+  "homepage": "https://github.com/likesmoothies/Playwright--Bdd#readme",
+  "devDependencies": {
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.8",
+    "chai": "^4.5.0",
+    "cucumber-html-reporter": "^5.5.1",
+    "multiple-cucumber-html-reporter": "^3.9.0",
+    "pg": "^8.13.1",
+    "playwright-bdd": "^7.5.0",
+    "prettier": "^2.8.8"
+  }
+  
+}
